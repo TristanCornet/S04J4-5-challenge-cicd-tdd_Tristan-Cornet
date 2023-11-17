@@ -1,11 +1,16 @@
 export function setupCounter(element: HTMLButtonElement) {
   let counter = 0;
 
+  const updateCounterDisplay = () => {
+    element.innerHTML = `count is ${counter}`;
+  };
+
   element.addEventListener('click', () => {
-    element.innerHTML = `count is ${decrementCounter(counter)}`;
+    counter = decrementCounter(counter);
+    updateCounterDisplay();
   });
 
-  element.innerHTML = `count is ${counter}`;
+  updateCounterDisplay();
 }
 
 export const decrementCounter = (count: number): number => --count;
